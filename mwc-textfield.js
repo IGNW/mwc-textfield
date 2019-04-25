@@ -15,7 +15,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import {ComponentElement, html} from '@material/mwc-base/component-element.js';
-import {classMap} from 'lit-html/directives/classMap.js';
+import {classMap} from 'lit-html/directives/class-map.js';
 import {MDCWebComponentMixin} from '@material/mwc-base/mdc-web-component.js';
 import {MDCTextField} from '@material/textfield';
 import {style} from './mwc-textfield-css.js';
