@@ -86,20 +86,21 @@ export class Textfield extends ComponentElement {
     return html`
       ${this.renderStyle()}
       <div class="mdc-text-field mdc-text-field--upgraded ${classMap(hostClassInfo)}">
-       
-      </div>
-      ${helperText ? html`<p class="mdc-text-field-helper-text" aria-hidden="true">${helperText}</p>` : ''}`;
-  }
-
-  /**
-   * 
-    ${this.renderIcon(fullWidth, icon)}
+        ${this.renderIcon(fullWidth, icon)}
         ${this._renderInput({value, required, type, placeHolder, label})}
         ${this.renderLabel(fullWidth, label, value)}
         ${this.renderOutline(fullWidth, outlined)}
-   */
+      </div>
+      ${this.getHelperText(helperText)}`
+  }
 
-   /** 
+  getHelperText() {
+    if(helperText) {
+      return html`<p class="mdc-text-field-helper-text" aria-hidden="true">${helperText}</p>`;
+    }
+    return html``;
+  }
+
   renderOutline(fullWidth, outlined) {
     if(!fullWidth && outlined) {
       return html`
@@ -115,10 +116,10 @@ export class Textfield extends ComponentElement {
 
   renderLabel(fullWidth, label, value) {
     if(!fullWidth && label) {
-      html`<label class="mdc-floating-label ${this.printFloatLabel(value)}" for="text-field">${label}</label>`;
+      html`<label class="mdc-floating-label ${this.printFloatLabel}" for="text-field">${label}</label>`;
     }
     return html``;
-  } **/
+  }
 
   printFloatLabel(value) {
     if(value) {
@@ -133,10 +134,10 @@ export class Textfield extends ComponentElement {
     }
     return html``;
   }
-  /** 
+
   _renderInput({value, required, type, placeHolder, label}) {
     return html`<input type="${type}" placeholder="${placeHolder}" ?required="${required}" class="mdc-text-field__input ${this.printUpgraded(value)}" id="text-field" .value="${value}" aria-label="${label}">`;
-  } */
+  }
 
   printUpgraded(value) {
     if(value) {
