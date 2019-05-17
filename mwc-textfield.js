@@ -115,7 +115,7 @@ export class Textfield extends ComponentElement {
   }
 
   renderLabel(fullWidth, label) {
-    if(!fullWidth && label) {
+    if(fullWidth !== true && label) {
       html`<label class="mdc-floating-label ${this.printFloatLabel}" for="text-field">${label}</label>`;
     }
     return html``;
