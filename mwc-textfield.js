@@ -20,6 +20,7 @@ import {MDCWebComponentMixin} from '@material/mwc-base/mdc-web-component.js';
 import {MDCTextField} from '@material/textfield';
 import {style} from './mwc-textfield-css.js';
 import '@material/mwc-icon/mwc-icon-font.js';
+import {html} from 'lit-html';
 
 class MDCWCTextField extends MDCWebComponentMixin(MDCTextField) {}
 
@@ -85,16 +86,35 @@ export class Textfield extends ComponentElement {
     return html`
       ${this.renderStyle()}
       <div class="mdc-text-field mdc-text-field--upgraded ${classMap(hostClassInfo)}">
-        ${!fullWidth && icon ? html`<i class="material-icons mdc-text-field__icon" tabindex="0">${icon}</i>` : ''}
+        ${this.renderIcon(fullWidth, icon)}
         ${this._renderInput({value, required, type, placeHolder, label})}
-        ${!fullWidth && label ? html`<label class="mdc-floating-label ${value ? 'mdc-floating-label--float-above' : ''}" for="text-field">${label}</label>` : ''}
-        ${!fullWidth && outlined ? html`<div class="mdc-notched-outline">
-            <svg><path class="mdc-notched-outline__path"/></svg>
-          </div>
-          <div class="mdc-notched-outline__idle"></div>` :
-    html`<div class="mdc-line-ripple"></div>`}
+        ${this.renderLabel(fullWidth, label)}
+        ${this.renderOutline(fullWidth, outlined)}
       </div>
       ${helperText ? html`<p class="mdc-text-field-helper-text" aria-hidden="true">${helperText}</p>` : ''}`;
+  }
+
+  renderOutline(fullWidth, outlined) {
+    if(!fullWidth && outlined) {
+      return html`<div class="mdc-notched-outline">
+        <svg><path class="mdc-notched-outline__path"/></svg>
+        </div>
+        <div class="mdc-notched-outline__idle"></div>`;
+    }
+    return html`<div class="mdc-line-ripple"></div>`;
+  }
+
+  renderLabel(fullWidth, label) {
+    if(!fullWidth && label) {
+      html`<label class="mdc-floating-label ${value ? 'mdc-floating-label--float-above' : ''}" for="text-field">${label}</label>`;
+    }
+    return html``;
+  }
+  renderIcon(fullWidth, icon) {
+    if(!fullWidth && icon) {
+      return  html`<i class="material-icons mdc-text-field__icon" tabindex="0">${icon}</i>`;
+    }
+    return html``;
   }
 
   _renderInput({value, required, type, placeHolder, label}) {
