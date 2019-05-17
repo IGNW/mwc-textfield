@@ -99,6 +99,7 @@ export class Textfield extends ComponentElement {
         ${this.renderOutline(fullWidth, outlined)}
    */
 
+   /** 
   renderOutline(fullWidth, outlined) {
     if(!fullWidth && outlined) {
       return html`
@@ -117,7 +118,7 @@ export class Textfield extends ComponentElement {
       html`<label class="mdc-floating-label ${this.printFloatLabel(value)}" for="text-field">${label}</label>`;
     }
     return html``;
-  }
+  } **/
 
   printFloatLabel(value) {
     if(value) {
@@ -132,10 +133,10 @@ export class Textfield extends ComponentElement {
     }
     return html``;
   }
-
+  /** 
   _renderInput({value, required, type, placeHolder, label}) {
     return html`<input type="${type}" placeholder="${placeHolder}" ?required="${required}" class="mdc-text-field__input ${this.printUpgraded(value)}" id="text-field" .value="${value}" aria-label="${label}">`;
-  }
+  } */
 
   printUpgraded(value) {
     if(value) {
