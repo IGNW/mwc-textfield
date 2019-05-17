@@ -86,13 +86,18 @@ export class Textfield extends ComponentElement {
     return html`
       ${this.renderStyle()}
       <div class="mdc-text-field mdc-text-field--upgraded ${classMap(hostClassInfo)}">
-        ${this.renderIcon(fullWidth, icon)}
-        ${this._renderInput({value, required, type, placeHolder, label})}
-        ${this.renderLabel(fullWidth, label, value)}
-        ${this.renderOutline(fullWidth, outlined)}
+       
       </div>
       ${helperText ? html`<p class="mdc-text-field-helper-text" aria-hidden="true">${helperText}</p>` : ''}`;
   }
+
+  /**
+   * 
+    ${this.renderIcon(fullWidth, icon)}
+        ${this._renderInput({value, required, type, placeHolder, label})}
+        ${this.renderLabel(fullWidth, label, value)}
+        ${this.renderOutline(fullWidth, outlined)}
+   */
 
   renderOutline(fullWidth, outlined) {
     if(!fullWidth && outlined) {
