@@ -88,7 +88,7 @@ export class Textfield extends ComponentElement {
       <div class="mdc-text-field mdc-text-field--upgraded ${classMap(hostClassInfo)}">
         ${this.renderIcon(fullWidth, icon)}
         ${this._renderInput({value, required, type, placeHolder, label})}
-        ${this.renderLabel(fullWidth, label, value)}
+        ${this.renderLabel(fullWidth, label)}
         ${this.renderOutline(fullWidth, outlined)}
       </div>
       ${this.getHelperText(helperText)}`
@@ -114,7 +114,7 @@ export class Textfield extends ComponentElement {
     return html`<div class="mdc-line-ripple"></div>`;
   }
 
-  renderLabel(fullWidth, label, value) {
+  renderLabel(fullWidth, label) {
     if(!fullWidth && label) {
       html`<label class="mdc-floating-label ${this.printFloatLabel}" for="text-field">${label}</label>`;
     }
