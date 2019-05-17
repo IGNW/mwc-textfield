@@ -94,7 +94,7 @@ export class Textfield extends ComponentElement {
       ${this.getHelperText(helperText)}`
   }
 
-  getHelperText() {
+  getHelperText(helperText) {
     if(helperText) {
       return html`<p class="mdc-text-field-helper-text" aria-hidden="true">${helperText}</p>`;
     }
